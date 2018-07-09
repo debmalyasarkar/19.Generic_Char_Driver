@@ -1,0 +1,22 @@
+This driver makes use of the file-position field to read/write/seek
+to any position of a virtual device buffer.
+
+In Driver Side
+--------------
+We have to handle the updation of file-position variable in all of our
+file operation functions.
+
+In Application Side
+-------------------
+We can read, write at any position by using seek function.
+
+
+Example
+-------
+Write 100 bytes
+Read 100 bytes ------> Starting Index is 100 so we get garbage
+Seek to Position 0
+Read 100 bytes ------> We get the data that we have written previously
+
+We can also implement a circular queue inside the driver and have separate 
+read and write indices for management.
